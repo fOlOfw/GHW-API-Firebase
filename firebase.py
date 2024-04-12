@@ -3,8 +3,8 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 
-# cred = credentials.Certificate("authkey.json") 
-# firebase_admin.initialize_app(cred)
+cred = credentials.Certificate("authkey.json") 
+firebase_admin.initialize_app(cred)
 
 #create a new document in firestore
 def create_document(collection: str, document_data: dict):
