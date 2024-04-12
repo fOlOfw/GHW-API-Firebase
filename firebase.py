@@ -1,3 +1,5 @@
+# Running the server: uvicorn main:app --reload
+
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -16,6 +18,6 @@ def create_document(collection: str, document_data: dict):
     except Exception as e:
         print('An error occurred:', e)
 
-    #usage example
-    create_document('users', {'name': 'John Doe', 'email': 'johndoe@example.com'})
+    # #usage example
+    # create_document('characters', {'name': 'John Doe', 'occupation': 'artist'})
 

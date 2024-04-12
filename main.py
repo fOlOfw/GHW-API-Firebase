@@ -2,6 +2,7 @@ from typing import Union
 from fastapi import FastAPI, Request
 from firebase import create_document
 
+
 app = FastAPI()
 
 
@@ -10,13 +11,13 @@ def read_root():
     return {"Hello": "World"}
 
 @app.post("/add_character")
-async def add_character(request: Request):
+async def add_character(request: Request): 
     data = await request.json()
     print(data)
-    create_document("characters", data)
+    create_document("people", data)
     return {"status": "success"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+# @app.get("/items/{item_id}")
+# def read_item(item_id: int, q: Union[str, None] = None):
+#     return {"item_id": item_id, "q": q}
 

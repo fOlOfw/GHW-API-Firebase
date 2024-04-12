@@ -2,7 +2,6 @@
 
 - Firebase
     - Firebase Admin Python SDK
-- Fast API
-    - Uvicorn 
-
-- Runing the server: uvicorn main:app --reload
+- Fast API - https://fastapi.tiangolo.com/#create-it
+    - Uvicorn - https://www.uvicorn.org
+- Thunder Client - API client extension
