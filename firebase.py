@@ -32,9 +32,11 @@ def read_all_characters():
     except Exception as e:
         print('An error occurred:', e)
 
-def delete_character(id: str):
+async def delete_character_firebase(id: str):
     try:
-        db.collection('characters').document(id).delete()
+        await db.collection('npc').document(id).delete()
         print('Document with ID:', id, 'deleted')
+        return {"status": "success", "message": f"Character with ID {id} deleted successfully."}
     except Exception as e:
         print('An error occurred, could not delete the character:', e)
+        return {"status": "error", "message": f"Failed to delete character with ID {id}: {str(e)}"}

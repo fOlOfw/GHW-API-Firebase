@@ -1,7 +1,6 @@
 from typing import Union
 from fastapi import FastAPI, Request
-from firebase import create_document, read_all_characters
-
+from firebase import create_document, read_all_characters, delete_character_firebase
 
 app = FastAPI()
 
@@ -18,7 +17,7 @@ async def read_characters():
 async def add_character(request: Request): 
     data = await request.json()
     print("character added: ", data)
-    create_document("people", data)
+    create_document("npc", data)
     return {"status": "success"}
 
 # @app.get("/items/{item_id}")
@@ -26,8 +25,11 @@ async def add_character(request: Request):
 #     return {"item_id": item_id, "q": q}
 
 @app.delete("/delete_character")
-async def delete_character(request: Request):
-    data = await request.json()
-    print("character deleted: ", data)
-    delete_character(data['id'])
-    return {"status": "success"}
+async def delete_character_endpoint(request: Request):
+    try:
+        data = await request.json()
+        character_id = data.get('id')
+        await delete_character_firebase(character_id)
+        return {"status": "success", "message": f"Character with ID {character_id} deleted successfully."}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
