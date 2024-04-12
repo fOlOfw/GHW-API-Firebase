@@ -19,7 +19,7 @@ def create_document(collection: str, document_data: dict):
     except Exception as e:
         print('An error occurred:', e)
 
-    # #usage example
+    # usage example
     # create_document('characters', {'name': 'John Doe', 'occupation': 'artist'})
 
 def read_all_characters():

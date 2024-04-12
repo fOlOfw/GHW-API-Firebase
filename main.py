@@ -24,8 +24,11 @@ async def add_character(request: Request):
 # def read_item(item_id: int, q: Union[str, None] = None):
 #     return {"item_id": item_id, "q": q}
 
-@app.delete("/delete_character")
-async def delete_character_endpoint(request: Request):
+
+# In order to code to work, do not give same function name as in the firebase.py file. 
+# Ex: below function called delete_character_endpoint and in firebase.py -> delete_character_firebase
+@app.delete("/delete_character") 
+async def delete_character_endpoint(request: Request): 
     try:
         data = await request.json()
         character_id = data.get('id')
